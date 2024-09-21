@@ -10,9 +10,9 @@ import {motion} from 'framer-motion'
 
 function Hero() {
   return (
-    <div className='px-4 w-[90%] mx-auto py-16'>
+    <div id='#home' className='px-4 w-[90%] mx-auto py-16 relative'>
         <div className='flex lg:flex-row flex-col-reverse mb-10 lg:mb-0'>
-      <div className="lg:w-2/3 w-full text-center lg:text-left flex flex-col justify-center">
+      <motion.div className="lg:w-2/3 w-full text-center lg:text-left flex flex-col justify-center">
         <h1 className="font-semibold text-sm">Hi, I &apos;m</h1>
         <h1 className="text-3xl font-sans font-bold text-dark dark:text-third">Untung Budiman</h1>
         <TypeAnimation sequence={[
@@ -33,7 +33,7 @@ function Hero() {
                 </motion.button>
             </Link>
         </div>
-      </div>
+      </motion.div>
       <div className="lg:w-1/3 w-full mb-8 lg:mb-0">
         <Image src={Dark} className='w-full h-full dark:block hidden' alt='darkmode'/>
         <Image src={Light} className='w-full h-full block dark:hidden' alt='light'/>

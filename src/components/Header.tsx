@@ -39,11 +39,11 @@ const Header = () => {
             </div>
 
             <div className="hidden lg:flex flex-row gap-6 items-center justify-center">
-                <Link href={"#home"} className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>01.Home</Link>
-                <Link href={"#about"} className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>02.About</Link>
-                <Link href={"#skills"} className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>03.Skills</Link>
-                <Link href={"#portofolio"} className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>04.Portofolio</Link>
-                <Link href={"#contact"} className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>05.Contact</Link>
+                <Link href='#home' className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>01.Home</Link>
+                <Link href='#about' className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>02.About</Link>
+                <Link href='#skills' className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>03.Skills</Link>
+                <Link href='#portofolio' className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>04.Portofolio</Link>
+                <Link href='#contact' className='font-bold text-lg hover:text-primary hover:translate-x-2 transition-transform duration-300'>05.Contact</Link>
                 <div className="flex items-center justify-center">
                     <label className="inline-flex items-center relative">
                         <input className="peer hidden" id="toggle" type="checkbox" checked={darkMode}

@@ -79,7 +79,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className="md:hidden block">
+            <div className="md:hidden block transition-all duration-500">
                 {active ? <AiOutlineClose size={30} onClick={handleNav}/> : <RiMenu3Fill size={30} onClick={handleNav}/>}
             </div>
 

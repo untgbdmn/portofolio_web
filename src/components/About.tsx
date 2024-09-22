@@ -36,7 +36,7 @@ export default function About() {
         }
     ];
   return (
-    <div id='#about' className='px-4 w-[90%] mx-auto py-20 relative'>
+    <div id='#about' className='px-4 w-[90%] mx-auto py-20 h-full'>
         <div className="flex flex-row items-center justify-center">
             <div className="h-[2px] lg:w-full w-[38%] bg-black dark:bg-white mr-5 lg:hidden block"></div>
             <HyperText
@@ -56,7 +56,7 @@ export default function About() {
                 </motion.button>
             ))}
         </div>
-        <div className="lg:px-10 px-0 mt-5 min-h-36">
+        <div className="lg:px-10 px-0 mt-5 min-h-60">
             {data[activeTab].content}
         </div>
     </div>

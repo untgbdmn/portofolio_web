@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Education() {
   return (
-    <div className='w-full h-full min-h-96'>
+    <div className='w-full h-full'>
       <div className="flex flex-row-reverse items-center justify-center gap-3">
         <div className="flex flex-col h-full w-full text-center lg:text-start">
             <h1 className="text-dark text-xl font-bold dark:text-light">SMK Negeri 2 Pengasih</h1>

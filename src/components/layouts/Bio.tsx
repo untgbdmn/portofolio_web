@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Bio() {
   return (
-    <div className='w-full h-full flex lg:flex-row-reverse flex-col-reverse gap-4 lg:gap-0'>
+    <div className='w-full h-full flex lg:flex-row-reverse flex-col-reverse gap-4 lg:gap-0 justify-center'>
       <div className="w-full lg:w-[5%] flex flex-row lg:flex-col items-center gap-4 justify-center">
         <motion.button whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.8 }}
             className='bg-black text-white p-2 rounded-full dark:bg-white dark:text-black'>

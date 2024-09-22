@@ -1,8 +1,9 @@
 "use client";
+
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 import Image from "next/image";
 import { encode } from "qss";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   AnimatePresence,
   motion,
@@ -19,13 +20,13 @@ type LinkPreviewProps = {
   width?: number;
   height?: number;
   quality?: number;
-  layout?: string;
+  layout?: "fixed" | "responsive" | "fill" | "intrinsic";
 } & (
   | { isStatic: true; imageSrc: string }
   | { isStatic?: false; imageSrc?: never }
 );
 
-export const LinkPreview = ({
+export const LinkPreview: React.FC<LinkPreviewProps> = ({
   children,
   url,
   className,
@@ -35,48 +36,42 @@ export const LinkPreview = ({
   layout = "fixed",
   isStatic = false,
   imageSrc = "",
-}: LinkPreviewProps) => {
-  let src;
-  if (!isStatic) {
-    const params = encode({
-      url,
-      screenshot: true,
-      meta: false,
-      embed: "screenshot.url",
-      colorScheme: "dark",
-      "viewport.isMobile": true,
-      "viewport.deviceScaleFactor": 1,
-      "viewport.width": width * 3,
-      "viewport.height": height * 3,
-    });
-    src = `https://api.microlink.io/?${params}`;
-  } else {
-    src = imageSrc;
-  }
+}) => {
+  const src = isStatic
+    ? imageSrc
+    : `https://api.microlink.io/?${encode({
+        url,
+        screenshot: true,
+        meta: false,
+        embed: "screenshot.url",
+        colorScheme: "dark",
+        "viewport.isMobile": true,
+        "viewport.deviceScaleFactor": 1,
+        "viewport.width": width * 3,
+        "viewport.height": height * 3,
+      })}`;
 
-  const [isOpen, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const [isMounted, setIsMounted] = React.useState(false);
-
-  React.useEffect(() => {
+  useEffect(() => {
     setIsMounted(true);
   }, []);
 
   const springConfig = { stiffness: 100, damping: 15 };
   const x = useMotionValue(0);
-
   const translateX = useSpring(x, springConfig);
 
-  const handleMouseMove = (event: any) => {
-    const targetRect = event.target.getBoundingClientRect();
+  const handleMouseMove = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const targetRect = event.currentTarget.getBoundingClientRect();
     const eventOffsetX = event.clientX - targetRect.left;
-    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2; // Reduce the effect to make it subtle
+    const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2;
     x.set(offsetFromCenter);
   };
 
   return (
     <>
-      {isMounted ? (
+      {isMounted && (
         <div className="hidden">
           <Image
             src={src}
@@ -84,25 +79,23 @@ export const LinkPreview = ({
             height={height}
             quality={quality}
             layout={layout}
-            priority={true}
+            priority
             alt="hidden image"
           />
         </div>
-      ) : null}
+      )}
 
       <HoverCardPrimitive.Root
         openDelay={50}
         closeDelay={100}
-        onOpenChange={(open) => {
-          setOpen(open);
-        }}
+        onOpenChange={setOpen}
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
           className={cn("text-black dark:text-white", className)}
-          href={url}
+          asChild
         >
-          {children}
+          <Link href={url}>{children}</Link>
         </HoverCardPrimitive.Trigger>
 
         <HoverCardPrimitive.Content
@@ -127,22 +120,19 @@ export const LinkPreview = ({
                 }}
                 exit={{ opacity: 0, y: 20, scale: 0.6 }}
                 className="shadow-xl rounded-xl"
-                style={{
-                  x: translateX,
-                }}
+                style={{ x: translateX }}
               >
                 <Link
                   href={url}
                   className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
-                  style={{ fontSize: 0 }}
                 >
                   <Image
-                    src={isStatic ? imageSrc : src}
+                    src={src}
                     width={width}
                     height={height}
                     quality={quality}
                     layout={layout}
-                    priority={true}
+                    priority
                     className="rounded-lg"
                     alt="preview image"
                   />

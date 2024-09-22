@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import {
   Cloud,
@@ -33,11 +33,10 @@ export const cloudProps: Omit<ICloud, "children"> = {
     outlineColour: "#0000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    // dragControl: false,
   },
 };
 
-export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
+const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
@@ -52,7 +51,7 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       href: undefined,
       target: undefined,
       rel: undefined,
-      onClick: (e: any) => e.preventDefault(),
+      onClick: (e: React.MouseEvent) => e.preventDefault(),
     },
   });
 };
@@ -63,26 +62,38 @@ export type DynamicCloudProps = {
 
 type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
 
-export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
+const IconCloud: React.FC<DynamicCloudProps> = ({ iconSlugs }) => {
   const [data, setData] = useState<IconData | null>(null);
-  const { theme } = useTheme();
+  const { theme = "light" } = useTheme();
 
   useEffect(() => {
-    fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
+    let isMounted = true;
+    fetchSimpleIcons({ slugs: iconSlugs }).then((result) => {
+      if (isMounted) {
+        setData(result);
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
   }, [iconSlugs]);
 
   const renderedIcons = useMemo(() => {
     if (!data) return null;
-
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"),
+      renderCustomIcon(icon, theme)
     );
   }, [data, theme]);
 
   return (
-    // @ts-ignore
-    <Cloud {...cloudProps}>
-      <>{renderedIcons}</>
-    </Cloud>
+    <div className="icon-cloud-container">
+      {renderedIcons ? (
+        <Cloud {...cloudProps}>{renderedIcons}</Cloud>
+      ) : (
+        <div>Loading icons...</div>
+      )}
+    </div>
   );
-}
+};
+
+export default IconCloud;

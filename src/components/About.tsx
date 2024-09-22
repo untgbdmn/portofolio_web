@@ -56,7 +56,7 @@ export default function About() {
                 </motion.button>
             ))}
         </div>
-        <div className="lg:px-10 px-0 mt-5 min-h-60">
+        <div className="lg:px-10 px-0 mt-5 min-h-96">
             {data[activeTab].content}
         </div>
     </div>

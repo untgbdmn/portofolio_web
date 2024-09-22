@@ -30,7 +30,6 @@ export default function Bio() {
             Pengalaman magang saya di bidang Telekomunikasi telah memperkaya pengetahuan dan keterampilan saya dalam <span className="font-bold">konfigurasi, instalasi, dan pemecahan masalah jaringan</span>. Pengalaman ini tidak hanya meningkatkan keahlian teknis saya, tetapi juga mengajarkan saya pentingnya komunikasi dan kerja sama tim.
 
         </p>
-        <br/>
         <p className="">
             Saat ini, saya bekerja sebagai <span className="font-bold">Web Developer</span> dan <span className="font-semibold">telah berkontribusi dalam menyelesaikan beberapa proyek besar yang melibatkan pengembangan situs web</span>. Dalam peran ini, saya memanfaatkan keterampilan pemrograman saya untuk menciptakan solusi yang inovatif dan responsif. Selain keterampilan teknis, saya juga memiliki dasar yang kuat dalam <span className="font-bold">Desain Grafis</span>. Kemampuan ini memungkinkan saya untuk menciptakan desain yang <span className="font-bold">menarik secara visual dan fungsional</span>.
         </p>

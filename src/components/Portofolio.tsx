@@ -1,7 +1,8 @@
 import React from 'react'
+// import Image from 'next/image';
 import HyperText from './magicui/hyper-text'
 import { CardSpotlight } from './ui/card-spotlight'
-import CV from "@/public/cvform.png"
+import CV from "../public/cvform.png"
 import Porto from "@/public/cv_2.png"
 import { Highlight } from './ui/hero-highlight'
 

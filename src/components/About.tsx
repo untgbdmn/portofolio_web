@@ -37,14 +37,14 @@ export default function About() {
     ];
   return (
     <div id='#about' className='px-4 w-[90%] mx-auto py-20 h-full'>
-        <div className="flex flex-row items-center justify-center">
+        <div data-aos="fade-right" className="flex flex-row items-center justify-center">
             <div className="h-[2px] lg:w-full w-[38%] bg-black dark:bg-white mr-5 lg:hidden block"></div>
             <HyperText
                 className="text-xl font-bold text-black dark:text-white lg:mr-2 mr-0"
                 text="About"/>
             <div className="h-[2px] lg:w-full w-[38%] bg-black dark:bg-white ml-5"></div>
         </div>
-        <div className="w-full h-full flex items-center gap-5 pt-3 justify-center lg:justify-start">
+        <div data-aos="fade-left" className="w-full h-full flex items-center gap-5 pt-3 justify-center lg:justify-start">
             {data.map((tab, index) => (
                 <motion.button whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -56,7 +56,7 @@ export default function About() {
                 </motion.button>
             ))}
         </div>
-        <div className="lg:px-10 px-0 mt-5 min-h-96">
+        <div data-aos="fade-down" className="lg:px-10 px-0 mt-5 min-h-96">
             {data[activeTab].content}
         </div>
     </div>

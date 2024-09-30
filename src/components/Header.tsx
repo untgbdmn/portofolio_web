@@ -33,7 +33,7 @@ const Header = () => {
     }
 
     return (
-        <div className='bg-black/90 text-white dark:bg-white/15 flex flex-row justify-between items-center rounded-lg py-2 px-4 w-[90%] mx-auto mt-3'>
+        <div className='bg-black/90 text-white dark:bg-white/15 flex flex-row justify-between items-center rounded-lg py-2 px-4 w-[90%] mx-auto mt-3 fixed ml-[5%] backdrop-blur-md z-[999]'>
             <div className="">
                 <Link href={"#home"} className='font-bold text-2xl font-sans'>Untg<span className='text-primary'>Bdmn__</span></Link>
             </div>
@@ -83,7 +83,7 @@ const Header = () => {
                 {active ? <AiOutlineClose size={30} onClick={handleNav}/> : <RiMenu3Fill size={30} onClick={handleNav}/>}
             </div>
 
-            <div className={`${active ? 'translate-x-0' : 'translate-x-[200px]'} fixed flex flex-col top-[60px] bg-black/50 dark:bg-white/40 right-5 z-[9999] justify-center items-center gap-2 py-3 px-4 bg-opacity-90 backdrop-blur-2xl rounded-lg transition-transform duration-500`}>
+            <div className={`${active ? 'translate-x-0' : 'translate-x-[500px]'} fixed flex flex-col top-[60px] bg-black/50 dark:bg-white/40 right-5 z-[9999] justify-center items-center gap-2 py-3 px-4 bg-opacity-90 backdrop-blur-2xl rounded-lg transition-transform duration-500`}>
             <div className="flex items-center justify-center">
                     <label className="inline-flex items-center relative">
                         <input className="peer hidden" id="toggle" type="checkbox" checked={darkMode}

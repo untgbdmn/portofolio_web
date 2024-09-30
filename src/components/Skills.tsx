@@ -27,7 +27,7 @@ export default function Skills() {
         "linux", "archlinux", "debian", "ubuntu","windows"
       ];
   return (
-    <div className='px-4 w-[90%] mx-auto'>
+    <div id='skills' className='px-4 w-[90%] mx-auto'>
         <div data-aos="fade-left" className="flex flex-row-reverse items-center justify-center">
             <HyperText
                 className="text-xl font-bold text-black dark:text-white lg:mr-2 mr-0 "

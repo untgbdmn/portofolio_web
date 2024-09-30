@@ -16,7 +16,7 @@ function Hero() {
         AOS.init();
       }, []);
   return (
-    <div id='#home' className='px-4 w-[90%] mx-auto py-16 relative'>
+    <div id='home' className='px-4 w-[90%] mx-auto py-16 relative'>
         <div className='flex lg:flex-row flex-col-reverse mb-10 lg:mb-0'>
             <div data-aos="fade-right" className="lg:w-2/3 w-full text-center lg:text-left flex flex-col justify-center">
                 <h1 className="font-semibold text-sm">Hi, I &apos;m</h1>

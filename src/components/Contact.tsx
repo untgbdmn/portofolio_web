@@ -7,7 +7,7 @@ import {motion} from 'framer-motion'
 
 export default function Contact() {
   return (
-    <div className='px-4 w-[90%] mx-auto pb-2'>
+    <div id='contact' className='px-4 w-[90%] mx-auto pb-2'>
         <div className="flex flex-row-reverse items-center justify-center">
             <HyperText
             className="text-xl font-bold text-black dark:text-white lg:mr-2 mr-0"

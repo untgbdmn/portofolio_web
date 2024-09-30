@@ -8,7 +8,7 @@ import { Highlight } from './ui/hero-highlight'
 
 const Portofolio: React.FC = () => {
   return (
-    <div className='px-4 w-[90%] mx-auto pb-16'>
+    <div id='portofolio' className='px-4 w-[90%] mx-auto pb-16'>
       <div className="flex flex-row items-center justify-center">
         <HyperText
           className="text-xl font-bold text-black dark:text-white lg:mr-2 mr-0"

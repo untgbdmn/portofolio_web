@@ -36,7 +36,7 @@ export default function About() {
         }
     ];
   return (
-    <div id='#about' className='px-4 w-[90%] mx-auto py-20 h-full'>
+    <div id='about' className='px-4 w-[90%] mx-auto py-20 h-full'>
         <div data-aos="fade-right" className="flex flex-row items-center justify-center">
             <div className="h-[2px] lg:w-full w-[38%] bg-black dark:bg-white mr-5 lg:hidden block"></div>
             <HyperText

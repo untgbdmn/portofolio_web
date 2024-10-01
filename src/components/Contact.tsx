@@ -87,13 +87,13 @@ export default function Contact() {
 
         <Link href={'#home'}>
             <motion.div animate={{
-          y: [0, -15, 0],
+          y: [0, -10, 0],
         }}
         transition={{
           duration: 2,
           repeat: Infinity,
           ease: "easeInOut"
-        }} className="dark:bg-white bg-black p-1 h-fit w-fit fixed bottom-0 right-10 rounded-full">
+        }} className="dark:bg-white bg-black p-1 h-fit w-fit fixed bottom-5 right-10 rounded-full">
                 <FaRegArrowAltCircleUp className='text-2xl dark:text-black text-white'/>
             </motion.div>
         </Link>

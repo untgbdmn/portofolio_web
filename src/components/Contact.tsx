@@ -2,8 +2,9 @@
 import React from 'react'
 import HyperText from './magicui/hyper-text'
 import { MdEmail, MdLocationOn, MdOutlinePhoneInTalk } from "react-icons/md";
-import { FaGithub, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaLinkedinIn, FaRegArrowAltCircleUp } from 'react-icons/fa';
 import {motion} from 'framer-motion'
+import Link from 'next/link';
 
 export default function Contact() {
   return (
@@ -74,6 +75,13 @@ export default function Contact() {
         </div>
         <div className="w-full h-[2px] bg-black dark:bg-white mt-5"></div>
         <p className="w-full inline-flex items-center justify-center text-sm mt-2 font-semibold">&copy;2024  <a href="" className="font-bold text-black dark:text-third ml-2"> Untung Budiman</a> . All Rights Reserved</p>
+
+        <Link href={'#home'}>
+            <div className="dark:bg-white bg-black p-1 h-fit w-fit fixed bottom-0 right-10 rounded-full">
+                <FaRegArrowAltCircleUp className='text-2xl dark:text-black text-white'/>
+            </div>
+        </Link>
+
     </div>
   )
 }

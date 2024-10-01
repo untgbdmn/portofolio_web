@@ -2,9 +2,9 @@
 import React, {useEffect} from 'react'
 // import Image from 'next/image';
 import HyperText from './magicui/hyper-text'
-import { CardSpotlight } from './ui/card-spotlight'
-import CV from "../public/cvform.png"
-import Porto from "@/public/cv_2.png"
+// import { CardSpotlight } from './ui/card-spotlight'
+// import CV from "../public/cvform.png"
+// import Porto from "@/public/cv_2.png"
 import { Highlight } from './ui/hero-highlight'
 import AOS from 'aos'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
@@ -33,7 +33,7 @@ const Portofolio: React.FC = () => {
       </div>
 
       <div className="lg:grid grid-cols-2 gap-10 w-full h-full px-10 flex flex-col">
-        <CardSpotlight data-aos="fade-down"
+        {/* <CardSpotlight data-aos="fade-down"
           title="CV Form"
           desc="Saya menggunakan Laravel untuk pengembangan situs web ini dan MySQL sebagai sistem manajemen basis datanya. Saat ini, basis data dioperasikan secara lokal. Tujuan utama dari pembuatan situs web ini adalah sebagai bagian dari bootcamp untuk mempersiapkan diri memasuki perusahaan tempat saya bekerja saat ini."
           src={CV.src}
@@ -47,7 +47,7 @@ const Portofolio: React.FC = () => {
           src={Porto.src}
           githubLink="https://github.com/untgbdmn/personal_">
           <h1 className="text-white text-2xl text-center font-bold font-sans">Portofolio</h1>
-        </CardSpotlight>
+        </CardSpotlight> */}
       </div>
 
       <div className="">
@@ -60,7 +60,7 @@ const Portofolio: React.FC = () => {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when done.
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">

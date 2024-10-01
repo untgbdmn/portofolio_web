@@ -1,24 +1,23 @@
 "use client";
-
 import { cn } from "@/lib/utils";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-export const CanvasRevealEffect = ({
-  animationSpeed = 0.4,
-  opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
-  colors = [[0, 255, 255]],
-  containerClassName,
-  dotSize,
-  showGradient = true,
-}: {
+export const CanvasRevealEffect: React.FC<{
   animationSpeed?: number;
   opacities?: number[];
   colors?: number[][];
   containerClassName?: string;
   dotSize?: number;
   showGradient?: boolean;
+}> = ({
+  animationSpeed = 0.4,
+  opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
+  colors = [[0, 255, 255]],
+  containerClassName,
+  dotSize,
+  showGradient = true,
 }) => {
   return (
     <div className={cn("h-full relative bg-white w-full", containerClassName)}>
@@ -44,50 +43,28 @@ export const CanvasRevealEffect = ({
 };
 
 interface DotMatrixProps {
-  colors?: number[][];
-  opacities?: number[];
+  colors: number[][];
+  opacities: number[];
   totalSize?: number;
-  dotSize?: number;
-  shader?: string;
-  center?: ("x" | "y")[];
+  dotSize: number;
+  shader: string;
+  center: ("x" | "y")[];
 }
 
 const DotMatrix: React.FC<DotMatrixProps> = ({
-  colors = [[0, 0, 0]],
-  opacities = [0.04, 0.04, 0.04, 0.04, 0.04, 0.08, 0.08, 0.08, 0.08, 0.14],
+  colors,
+  opacities,
   totalSize = 4,
-  dotSize = 2,
-  shader = "",
-  center = ["x", "y"],
+  dotSize,
+  shader,
+  center,
 }) => {
   const uniforms = useMemo(() => {
-    let colorsArray = [
-      colors[0],
-      colors[0],
-      colors[0],
-      colors[0],
-      colors[0],
-      colors[0],
-    ];
-    if (colors.length === 2) {
-      colorsArray = [
-        colors[0],
-        colors[0],
-        colors[0],
-        colors[1],
-        colors[1],
-        colors[1],
-      ];
-    } else if (colors.length === 3) {
-      colorsArray = [
-        colors[0],
-        colors[0],
-        colors[1],
-        colors[1],
-        colors[2],
-        colors[2],
-      ];
-    }
+    const colorsArray = colors.length >= 3
+      ? [...colors.slice(0, 2), ...colors.slice(0, 2), ...colors.slice(0, 2)]
+      : colors.length === 2
+        ? [...colors[0], ...colors[0], ...colors[0], ...colors[1], ...colors[1], ...colors[1]]
+        : Array(6).fill(colors[0]);
 
     return {
       u_colors: {
@@ -177,15 +154,11 @@ type Uniforms = {
   };
 };
 
-const ShaderMaterial = ({
-  source,
-  uniforms,
-  maxFps = 60,
-}: {
+const ShaderMaterial: React.FC<{
   source: string;
   uniforms: Uniforms;
   maxFps?: number;
-}) => {
+}> = ({ source, uniforms, maxFps = 60 }) => {
   const { size } = useThree();
   const ref = useRef<THREE.Mesh>(null);
   let lastFrameTime = 0;
@@ -207,9 +180,7 @@ const ShaderMaterial = ({
   const getUniforms = () => {
     const preparedUniforms: { [key: string]: THREE.IUniform } = {};
 
-    for (const uniformName in uniforms) {
-      const uniform = uniforms[uniformName];
-
+    Object.entries(uniforms).forEach(([uniformName, uniform]) => {
       switch (uniform.type) {
         case "uniform1f":
           preparedUniforms[uniformName] = { value: uniform.value };
@@ -238,7 +209,7 @@ const ShaderMaterial = ({
           console.error(`Invalid uniform type for '${uniformName}'.`);
           break;
       }
-    }
+    });
 
     preparedUniforms["u_time"] = { value: 0 };
     preparedUniforms["u_resolution"] = {
@@ -251,12 +222,14 @@ const ShaderMaterial = ({
     return new THREE.ShaderMaterial({
       vertexShader: `
       precision mediump float;
-      in vec2 position;
+      in vec2 coordinates;
       uniform vec2 u_resolution;
       out vec2 fragCoord;
       void main(){
-        gl_Position = vec4(position, 0.0, 1.0);
-        fragCoord = (position + vec2(1.0)) * 0.5 * u_resolution;
+        float x = position.x;
+        float y = position.y;
+        gl_Position = vec4(x, y, 0.0, 1.0);
+        fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
         fragCoord.y = u_resolution.y - fragCoord.y;
       }
       `,
@@ -277,18 +250,14 @@ const ShaderMaterial = ({
   );
 };
 
-interface ShaderProps {
+const Shader: React.FC<{
   source: string;
   uniforms: Uniforms;
   maxFps?: number;
-}
-
-const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
+}> = ({ source, uniforms, maxFps = 60 }) => {
   return (
     <Canvas className="absolute inset-0 h-full w-full">
       <ShaderMaterial source={source} uniforms={uniforms} maxFps={maxFps} />
     </Canvas>
   );
 };
-
-export default CanvasRevealEffect;

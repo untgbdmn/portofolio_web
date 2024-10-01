@@ -1,15 +1,25 @@
-import React from 'react'
+"use client"
+import React, {useEffect} from 'react'
 // import Image from 'next/image';
 import HyperText from './magicui/hyper-text'
 import { CardSpotlight } from './ui/card-spotlight'
 import CV from "../public/cvform.png"
 import Porto from "@/public/cv_2.png"
 import { Highlight } from './ui/hero-highlight'
+import AOS from 'aos'
 
 const Portofolio: React.FC = () => {
+    useEffect(() => {
+        AOS.init({
+          once: false,
+          disable: "phone",
+          duration: 500,
+          easing: "ease-out-cubic",
+        });
+      }, []);
   return (
     <div id='portofolio' className='px-4 w-[90%] mx-auto pb-16'>
-      <div className="flex flex-row items-center justify-center">
+      <div data-aos="fade-down" className="flex flex-row items-center justify-center">
         <HyperText
           className="text-xl font-bold text-black dark:text-white lg:mr-2 mr-0"
           text="portofolio"
@@ -17,12 +27,12 @@ const Portofolio: React.FC = () => {
         <div className="h-[2px] lg:w-[85%] w-[78%] bg-black dark:bg-white ml-5"></div>
       </div>
 
-      <div className="py-5">
+      <div data-aos="fade-down" className="py-5">
         <h1 className="lg:text-3xl text-xl font-bold text-center font-sans">Navigating the paths of code,<br/> where <Highlight className='italic text-white'>every algorithm opens doors to colorful and imaginative realms.</Highlight></h1>
       </div>
 
       <div className="lg:grid grid-cols-2 gap-10 w-full h-full px-10 flex flex-col">
-        <CardSpotlight
+        <CardSpotlight data-aos="fade-down"
           title="CV Form"
           desc="Saya menggunakan Laravel untuk pengembangan situs web ini dan MySQL sebagai sistem manajemen basis datanya. Saat ini, basis data dioperasikan secara lokal. Tujuan utama dari pembuatan situs web ini adalah sebagai bagian dari bootcamp untuk mempersiapkan diri memasuki perusahaan tempat saya bekerja saat ini."
           src={CV.src}
@@ -30,7 +40,7 @@ const Portofolio: React.FC = () => {
           <h1 className="text-white text-2xl text-center font-bold font-sans">CV Form</h1>
         </CardSpotlight>
 
-        <CardSpotlight
+        <CardSpotlight data-aos="fade-down"
           title="Portofolio"
           desc="Dalam proses pengembangan proyek ini, saya telah memperluas keterampilan saya dengan memanfaatkan teknologi terkini, termasuk Next.js dengan TypeScript, Tailwind CSS, Magic UI, Acernity UI, dan Framer Motion. Penggunaan teknologi ini memungkinkan saya untuk menciptakan tampilan portofolio yang lebih modern dan interaktif."
           src={Porto.src}

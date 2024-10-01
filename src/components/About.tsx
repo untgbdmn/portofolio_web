@@ -1,12 +1,21 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import HyperText from './magicui/hyper-text'
 import {motion} from 'framer-motion'
 import Bio from "./layouts/Bio";
 import Education from "./layouts/Education";
 import Experience from "./layouts/Experience";
+import AOS from "aos"
 
 export default function About() {
+    useEffect(() => {
+        AOS.init({
+          once: false,
+          disable: "phone",
+          duration: 500,
+          easing: "ease-out-cubic",
+        });
+      }, []);
     const [activeTab, setActiveTab] = useState(0);
 
     const data = [
@@ -37,7 +46,7 @@ export default function About() {
     ];
   return (
     <div id='about' className='px-4 w-[90%] mx-auto py-20 h-full'>
-        <div className="flex flex-row items-center justify-center">
+        <div data-aos="fade-down" className="flex flex-row items-center justify-center">
             <div className="h-[2px] lg:w-full w-[38%] bg-black dark:bg-white mr-5 lg:hidden block"></div>
             <HyperText
                 className="text-xl font-bold text-black dark:text-white lg:mr-2 mr-0"
@@ -46,7 +55,7 @@ export default function About() {
         </div>
         <div className="w-full h-full flex items-center gap-5 pt-3 justify-center lg:justify-start">
             {data.map((tab, index) => (
-                <motion.button whileHover={{ scale: 1.1 }}
+                <motion.button whileHover={{ scale: 1.1 }} data-aos="fade-left"
                 whileTap={{ scale: 0.9 }}
                     key={index}
                     className={`tab-button ${activeTab === index ? 'bg-dark text-light dark:bg-light dark:text-dark' : 'bg-secondary dark:bg-third/20'} py-1 px-4 rounded-lg`}

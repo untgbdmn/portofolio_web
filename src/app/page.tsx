@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portofolio from "@/components/Portofolio";
 import Skills from "@/components/Skills";
-import { CanvasRevealEffectDemo } from '@/components/Test';
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
         <About />
         <Skills />
         <Portofolio />
-        <CanvasRevealEffectDemo/>
         <Contact />
     </>
   )

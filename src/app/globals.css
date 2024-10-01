@@ -14,3 +14,17 @@ html {
     scroll-behavior: smooth;
   }
 
+.porto__card {
+    @apply border py-8 px-3 flex items-center justify-center rounded-lg text-2xl font-bold font-sans text-black dark:text-white
+}
+
+.porto__card {
+    background: linear-gradient(45deg, #6F57E3, #0E17EB);
+    filter: grayscale(1);
+    transition: background 0.5s ease, filter 0.5s ease;
+}
+
+.porto__card:hover {
+    background: linear-gradient(90deg, #6F57E3, #0E17EB);
+    filter: grayscale(0);
+}

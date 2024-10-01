@@ -33,6 +33,10 @@ const Portofolio: React.FC = () => {
       </div>
 
       <div className="lg:grid grid-cols-2 gap-10 w-full h-full px-10 flex flex-col">
+
+
+
+
         {/* <CardSpotlight data-aos="fade-down"
           title="CV Form"
           desc="Saya menggunakan Laravel untuk pengembangan situs web ini dan MySQL sebagai sistem manajemen basis datanya. Saat ini, basis data dioperasikan secara lokal. Tujuan utama dari pembuatan situs web ini adalah sebagai bagian dari bootcamp untuk mempersiapkan diri memasuki perusahaan tempat saya bekerja saat ini."

@@ -25,6 +25,6 @@ html {
 }
 
 .porto__card:hover {
-    background: linear-gradient(90deg, #6F57E3, #0E17EB);
+    background: linear-gradient(160deg, #6F57E3, #8552a1);
     filter: grayscale(0);
 }

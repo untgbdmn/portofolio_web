@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 import HyperText from './magicui/hyper-text'
 import CV from "../public/cvform.png"
 import Porto from "@/public/cv_2.png"
+import Worktech from "@/public/worktech.png"
 import { Highlight } from './ui/hero-highlight'
 import AOS from 'aos'
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog'
@@ -87,6 +88,38 @@ const Portofolio: React.FC = () => {
                             Saya menggunakan Laravel untuk pengembangan situs web ini dan MySQL sebagai sistem manajemen basis datanya. Saat ini, basis data dioperasikan secara lokal. Tujuan utama dari pembuatan situs web ini adalah sebagai bagian dari bootcamp untuk mempersiapkan diri memasuki perusahaan tempat saya bekerja saat ini.
                         </div>
                         <Image src={CV} className="w-[40%] h-auto rounded-md" alt="porto"/>
+                    </div>
+                    <DialogFooter>
+                        <button className="flex items-center flex-row gap-2 dark:bg-white bg-black text-black dark:text-white w-fit px-4 py-1 rounded-lg">
+                            <FaGithub className='text-white dark:text-black text-xl'/>
+                            <a href="" className="text-white dark:text-black font-semibold font-sans">Github</a>
+                        </button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+        </div>
+
+        <div className="" data-aos="fade-up">
+            <Dialog>
+                <DialogTrigger asChild>
+                    <motion.div whileHover={{ scale: 0.9 }}
+                                whileTap={{ scale: 1.1 }}
+                                className="porto__card">
+                        <h2 className="text-white">WorkTech</h2>
+                    </motion.div>
+                </DialogTrigger>
+                <DialogContent className=''>
+                    <DialogHeader>
+                        <DialogTitle>WorkTech</DialogTitle>
+                        <DialogDescription>
+                            WorkTech is a school lab management solution that simplifies scheduling and device monitoring.
+                        </DialogDescription>
+                    </DialogHeader>
+                    <div className="flex flex-row gap-5 items-center text-base">
+                        <div className="">
+                            WorkTech adalah platform inovatif yang dirancang untuk mempermudah manajemen laboratorium komputer di sekolah. Dengan antarmuka yang ramah pengguna, WorkTech memungkinkan guru dan administrator untuk mengelola jadwal penggunaan komputer, memantau status perangkat, dan mengatur peminjaman alat dengan efisien. Fitur-fitur seperti laporan penggunaan dan pengingat pemeliharaan membantu menjaga perangkat tetap optimal dan siap pakai. Dengan WorkTech, manajemen lab komputer menjadi lebih terorganisir dan efektif, mendukung proses belajar mengajar yang lebih baik.
+                        </div>
+                        <Image src={Worktech} className="w-[40%] h-auto rounded-md" alt="porto"/>
                     </div>
                     <DialogFooter>
                         <button className="flex items-center flex-row gap-2 dark:bg-white bg-black text-black dark:text-white w-fit px-4 py-1 rounded-lg">
